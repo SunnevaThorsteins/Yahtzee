@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="nafnaDialog" prefHeight="182.0" prefWidth="356.0" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.yatzee.utlit.SetjaNofnDialogController">
+   <children>
+      <VBox prefHeight="199.0" prefWidth="373.0">
+         <children>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="165.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="111.0" text="%Leikmadur1" />
+                  <TextField fx:id="leikm1" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="148.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="111.0" text="%Leikmadur2" />
+                  <TextField fx:id="leikm2" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

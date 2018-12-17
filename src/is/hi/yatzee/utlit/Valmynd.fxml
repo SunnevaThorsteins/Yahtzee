@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<MenuBar fx:id="mal" prefHeight="32.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.yatzee.utlit.ValmyndController">
+    <menus>
+        <Menu mnemonicParsing="false" text="%Skra">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#nyrLeikurHandler" text="%NyrLeikur" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="%Breyt">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#breytaNofnumHandler" text="%BreytaNofnum" />
+            <Menu mnemonicParsing="false" text="%Tungm">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#enskHandler" text="%Ensk" />
+                  <MenuItem mnemonicParsing="false" onAction="#iskHandler" text="%Isk" />
+              </items>
+            </Menu>
+         </items></Menu>
+        <Menu mnemonicParsing="false" text="%Annad">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#stigaTaflaHandler" text="%Tafla" />
+            <MenuItem mnemonicParsing="false" onAction="#hættaHandler" text="%Haetta" />
+            <MenuItem mnemonicParsing="false" onAction="#opnaTonlist" text="%Tonlistar" />
+         </items></Menu>
+        <Menu mnemonicParsing="false" text="%Hjalp">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#umForritHandler" text="%UmForrit" />
+            <MenuItem mnemonicParsing="false" onAction="#leikreglurHandler" text="%Reglur" />
+            <MenuItem mnemonicParsing="false" onAction="#upplHandler" text="%Info" />
+            </items>
+        </Menu>
+    </menus>
+</MenuBar>

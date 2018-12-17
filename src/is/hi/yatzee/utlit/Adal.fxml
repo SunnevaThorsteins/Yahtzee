@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.yatzee.utlit.AdalController">
+    <children>
+        <VBox prefHeight="643.0" prefWidth="1040.0">
+            <children>
+                <fx:include fx:id="valmynd" source="Valmynd.fxml" />
+                <HBox prefHeight="684.0" prefWidth="1040.0">
+               <children>
+                  <VBox prefHeight="722.0" prefWidth="152.0">
+                     <children>
+                        <ToggleButton fx:id="asar" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%As">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="hnappar" />
+                           </toggleGroup></ToggleButton>
+                        <ToggleButton fx:id="tvistar" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Tvist" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="thristar" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Thrist" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="fjarkar" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Fjark" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="fimmur" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Fim" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="sexur" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Seks" toggleGroup="$hnappar" />
+                        <Label fx:id="bonusSumma" alignment="CENTER" prefHeight="27.0" prefWidth="157.0" text="%Sum" />
+                        <Label fx:id="bonus" alignment="CENTER" prefHeight="27.0" prefWidth="207.0" text="%Bon" />
+                        <ToggleButton fx:id="thrirEins" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%ThrirEins" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="fjorirEins" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%FjorirEins" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="fulltHus" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%FulltHus" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="litilRod" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Litil" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="storRod" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Stor" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="takaSens" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%TakaSens" toggleGroup="$hnappar" />
+                        <ToggleButton fx:id="yahtzee" mnemonicParsing="false" onAction="#toggleHandler" prefHeight="40.0" prefWidth="150.0" text="%Yahtzee" toggleGroup="$hnappar" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="604.0" prefWidth="50.0">
+                     <children>
+                        <Label fx:id="asarStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="tvistarStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="thristarStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="fjarkarStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="fimmurStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="sexurStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="bonusSummaStig1" alignment="CENTER" prefHeight="27.0" prefWidth="98.0" />
+                        <Label fx:id="bonusStig1" alignment="CENTER" prefHeight="27.0" prefWidth="70.0" />
+                        <Label fx:id="thrirEinsStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="fjorirEinsStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="husStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="litilRodStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="storRodStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="sensinnStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="yahtzeeStig1" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="604.0" prefWidth="52.0">
+                     <children>
+                        <Label fx:id="asarStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="tvistarStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="thristarStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="fjarkarStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="fimmurStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="sexurStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="bonusSummaStig2" alignment="CENTER" prefHeight="27.0" prefWidth="50.0" />
+                        <Label fx:id="bonusStig2" alignment="CENTER" prefHeight="27.0" prefWidth="50.0" />
+                        <Label fx:id="thrirEinsStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="fjorirEinsStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="husStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="litilRodStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="storRodStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="sensinnStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                        <Label fx:id="yahtzeeStig2" alignment="CENTER" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="604.0" prefWidth="790.0">
+                     <children>
+                        <HBox prefHeight="505.0" prefWidth="688.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="288.0" prefWidth="411.0">
+                                 <children>
+                                    <Label fx:id="notandi1" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="254.0">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Button fx:id="kastaTening1" mnemonicParsing="false" onAction="#kastaHandler" prefHeight="47.0" prefWidth="190.0" text="%Kast">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Label text="%EftirKost">
+                                       <VBox.margin>
+                                          <Insets top="50.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="243.0">
+                                       <children>
+                                          <Label fx:id="kost1" alignment="CENTER" prefHeight="42.0" prefWidth="153.0" style="-fx-border-color: #8f8f8f;" text="3" />
+                                       </children>
+                                    </HBox>
+                                    <Label text="%StigSam">
+                                       <VBox.margin>
+                                          <Insets top="35.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="243.0">
+                                       <children>
+                                          <Label fx:id="samtals1" alignment="CENTER" prefHeight="42.0" prefWidth="153.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="TOP_CENTER" prefHeight="451.0" prefWidth="470.0">
+                                 <children>
+                                    <Label fx:id="notandi2" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="254.0">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Button fx:id="kastaTening2" mnemonicParsing="false" onAction="#kastaHandler" prefHeight="47.0" prefWidth="190.0" text="%Kast">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Label text="%EftirKost">
+                                       <VBox.margin>
+                                          <Insets top="50.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="437.0">
+                                       <children>
+                                          <Label fx:id="kost2" alignment="CENTER" prefHeight="42.0" prefWidth="153.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                                       </children>
+                                    </HBox>
+                                    <Label text="%StigSam">
+                                       <VBox.margin>
+                                          <Insets top="35.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="243.0">
+                                       <children>
+                                          <Label fx:id="samtals2" alignment="CENTER" prefHeight="42.0" prefWidth="153.0" style="-fx-border-color: #8f8f8f;" text="0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="207.0" prefWidth="688.0">
+                           <children>
+                              <Label prefHeight="27.0" prefWidth="94.0" />
+                              <ToggleButton fx:id="ten1" mnemonicParsing="false" onAction="#tenHandler" prefHeight="100.0" prefWidth="100.0">
+                                 <graphic>
+                                    <ImageView fx:id="tenMynd1" fitHeight="82.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@teningar/one.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                              <ToggleButton fx:id="ten2" mnemonicParsing="false" onAction="#tenHandler" prefHeight="100.0" prefWidth="100.0">
+                                 <graphic>
+                                    <ImageView fx:id="tenMynd2" fitHeight="82.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@teningar/two.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                              <ToggleButton fx:id="ten3" mnemonicParsing="false" onAction="#tenHandler" prefHeight="100.0" prefWidth="100.0">
+                                 <graphic>
+                                    <ImageView fx:id="tenMynd3" fitHeight="82.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@teningar/three.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                              <ToggleButton fx:id="ten4" mnemonicParsing="false" onAction="#tenHandler" prefHeight="100.0" prefWidth="100.0">
+                                 <graphic>
+                                    <ImageView fx:id="tenMynd4" fitHeight="82.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@teningar/four.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                              <ToggleButton fx:id="ten5" mnemonicParsing="false" onAction="#tenHandler" prefHeight="100.0" prefWidth="100.0">
+                                 <graphic>
+                                    <ImageView fx:id="tenMynd5" fitHeight="82.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@teningar/five.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                              <Label prefHeight="27.0" prefWidth="21.0" />
+                              <Button fx:id="losaTen" alignment="CENTER" mnemonicParsing="false" onAction="#losaTenHandler" prefHeight="50.0" prefWidth="150.0" text="%LosaTen" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+                </HBox>
+            </children>
+        </VBox>
+      <fx:include fx:id="nafnaDialog" source="SetjaNofn.fxml" />
+      <fx:include fx:id="stigatafla" source="Stigatafla.fxml" />
+      <fx:include fx:id="leikLokid" source="LeikLokid.fxml" />
+      <fx:include fx:id="tonlist" source="Tonlist.fxml" />
+    </children>
+</AnchorPane>
