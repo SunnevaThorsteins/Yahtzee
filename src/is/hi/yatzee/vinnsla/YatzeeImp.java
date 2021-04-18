@@ -15,42 +15,47 @@ import java.util.Random;
 
 public class YatzeeImp implements Yatzee {
     
-    private String nafnLeikmanns1; //Inniheldur nafn spilara 1
-    private String nafnLeikmanns2; //Inniheldur naf spilara 2
-    public final int[] stigin1 = new int[14]; //Heldur utan um stig spilara 1
-    public final int[] stigin2 = new int[14]; //Heldur utan um stig spilara 1
-    private int summa1=0;//Summa fyrir spilara 1
-    private int summa2=0;//Summa fyrir spilara 2
-    public int nuverandi = 1; //hvaða leikmaður á að gera
-    public int einfaldir1 = 0; //Hversu marga einfalda er búið að reikna
-    public int einfaldir2 = 0; //Hversu marga einfalda er búið að reikna
-    public boolean buinBonus1 = false; //Hvort bónusinn fyrir spilara 1 sé búinn
-    public boolean buinBonus2 = false; //Hvort bónusinn fyrir spilara 3 sé búinn
-    private int vin = 0; //Hversu margar umferðir eru búnar
-    public boolean mogulegStig; //Hvort verið sé að sýna möguleg stig eða ekki
-
+    private String nafnLeikmanns1; //name of player 1
+    private String nafnLeikmanns2; //name of player 2
+    public final int[] stigin1 = new int[14]; //Contains points for player 1
+    public final int[] stigin2 = new int[14]; //Contains points for player 2
+    private int summa1=0; //point sum for player 1
+    private int summa2=0; //point sum for player 2
+    public int nuverandi = 1; //which players turn it is
+    public int einfaldir1 = 0; //How many simple or "einfalda" we have calculated for player 1
+    public int einfaldir2 = 0; //How many simple or "einfalda" we have calculated for player 2
+    public boolean buinBonus1 = false; //Wheather the bonus for player 1 is calculated
+    public boolean buinBonus2 = false; //Wheather the bonus for player 2 is calculated
+    private int vin = 0; //How many rounds are finished
+    public boolean mogulegStig; //Wheather we are displaying possible points or not
+    
+    // get name of player 1
     @Override
     public String getNafnLeikmanns1() {
         return this.nafnLeikmanns1;
     }
     
+    // get name of player 2
     @Override
     public String getNafnLeikmanns2() {
         return this.nafnLeikmanns2;
-    }
+    } 
 
+  //get all points sum for player 1
     @Override
     public int getSumma1() {
         return this.summa1;
         
     }
     
+    //get all points sum for player 2
     @Override
     public int getSumma2() {
-        return this.summa2;
+        return this.summa2; 
         
     }
 
+  //calculate "simple", number of aces,twos etc.
     @Override
     public int reiknaEinfalda(int i, Teningar teningar) {
         if(nuverandi == 1){
@@ -77,6 +82,7 @@ public class YatzeeImp implements Yatzee {
         
     }
     
+  //calculate chance
     @Override
     public int reiknaSensinn(int n, Teningar teningar) {
         return reiknaAllaTeninga(n, teningar);
@@ -98,6 +104,7 @@ public class YatzeeImp implements Yatzee {
         }
     }
 
+  //set player1 name
     @Override
     public int reiknaSumma() {
         vin++;
@@ -116,17 +123,19 @@ public class YatzeeImp implements Yatzee {
         }
     }
 
+  //set player1 name
     @Override
     public void setNafnLeikmanns1(String nafnLeikmanns) {
         this.nafnLeikmanns1 = nafnLeikmanns;
     }
     
+    //set player2 name
     @Override
     public void setNafnLeikmanns2(String nafnLeikmanns) {
         this.nafnLeikmanns2 = nafnLeikmanns;
     }
     
-
+    // calculate 3 or 4 of a kind
     @Override
     public int reiknaEins(int n, Teningar teningar) {
         int eins = 0;
@@ -144,6 +153,7 @@ public class YatzeeImp implements Yatzee {
         return 0;
     }
 
+    //calculate row
     @Override
     public int reiknaRod(int n, Teningar teningar) {
         int[] rod = new int[5];
@@ -171,6 +181,7 @@ public class YatzeeImp implements Yatzee {
         return 0;
     }
     
+    //order array
     private void radaFylki(int f[]){
         for(int i = 0; i < f.length-1; i++){
             for(int j = 0; j < f.length-1; j++){
@@ -183,6 +194,7 @@ public class YatzeeImp implements Yatzee {
         }
     }
     
+    //find row
     private int finnaRod(int l, int f[]){
         int lengd = 1;
         for(int j = 0; j < f.length; j++){
@@ -200,6 +212,7 @@ public class YatzeeImp implements Yatzee {
         return 0;
     }
 
+    // calculate yhatzee
     @Override
     public int reiknaYahtzee(int n, Teningar teningar){
         boolean fimmEins = finnaAlvegEins(5, teningar);
@@ -213,6 +226,7 @@ public class YatzeeImp implements Yatzee {
         return 0;
     }
     
+    //calculate full house
     @Override
     public int reiknaFulltHus(int n, Teningar teningar){
         boolean thrirEins = finnaAlvegEins(3, teningar);
@@ -221,13 +235,17 @@ public class YatzeeImp implements Yatzee {
             if(nuverandi == 1)
                 stigin1[n] = 25;
             else
-                stigin2[n] = 24;
+                stigin2[n] = 25; // bug
             return 25;
         }
         return 0;
     }
     
-    //Finnur hvort það eru nákvæmlega fjoldiEins eins teningar
+    /*
+     *  Find identical dices
+     *  @param fjoldiEins - same dice number
+     *  @param teningar - given dices 
+     */
     private boolean finnaAlvegEins(int fjoldiEins, Teningar teningar){
         for(int t: teningar.getTeningar()){
             int eins = 0;
@@ -244,7 +262,7 @@ public class YatzeeImp implements Yatzee {
     
     @Override
     public int bonus(int s){
-        if(s > 63){
+        if(s >= 63){
             setBonus(35);
             return 35;
         }
@@ -258,6 +276,7 @@ public class YatzeeImp implements Yatzee {
             stigin2[13] = b;
     }
     
+    //bonus sum
     @Override
     public int bonusSumma(){
         int s = 0;
@@ -273,6 +292,7 @@ public class YatzeeImp implements Yatzee {
         return s;
     }
     
+    // victory
     @Override
     public boolean vinningur(){
         if(vin == 26)
@@ -280,6 +300,7 @@ public class YatzeeImp implements Yatzee {
         return false;
     }
     
+    // find victor
     @Override
     public int finnaSigurvegara(){
         if(summa1 == summa2){

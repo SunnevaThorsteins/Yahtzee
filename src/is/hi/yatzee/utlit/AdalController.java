@@ -1,7 +1,7 @@
 /*
- * Aðal controllerinn fyrir yahtzee spil þar sem allt er tengt saman. Sér um 
- * helstu virknina til dæmis að byggja upp viðmótið fyrir yahtzee blaðið, köstin
- * og teningana.
+ * The main controller for the yhatzee game. In charge of the functionality for
+ * the UI for the yhatzee sheet, dice thows and dice.
+ * 
  */
 package is.hi.yatzee.utlit;
 
@@ -23,185 +23,168 @@ import javafx.scene.paint.Color;
 
 public class AdalController implements Initializable {
     @FXML
-    private ValmyndController valmyndController; //breyta sem heldur utan um 
-    //valmyndcontroller
+    private ValmyndController valmyndController;
     @FXML
-    private SetjaNofnDialogController nafnaDialogController; //heldur utan um
-    //SetjaNofnDialogController
+    private SetjaNofnDialogController nafnaDialogController;
     @FXML
-    private StigataflaController stigataflaController; //heldur utan um
-    //StigataflaController
+    private StigataflaController stigataflaController;
     @FXML
-    private LeikLokidController leikLokidController; //heldur utan um
-    //LeikLokidController
+    private LeikLokidController leikLokidController;
     @FXML
-    private TonlistController tonlistController; //heldur utan um 
-    //TonlistController
-    private Button kastaTening; //breyta fyrir kasta takkann
+    private TonlistController tonlistController;
     @FXML
-    private ToggleButton ten1; //heldur utan um tening 1
+    private ToggleButton ten1; //dice 1 button
     @FXML
-    private ToggleButton ten2; //heldur utan um tening 2
+    private ToggleButton ten2; //dice 2 button
     @FXML
-    private ToggleButton ten3; //heldur utan um tening 3
+    private ToggleButton ten3; //dice 3 button
     @FXML
-    private ToggleButton ten4; //heldur utan um tening 4
+    private ToggleButton ten4; //dice 4 button
     @FXML
-    private ToggleButton ten5; //heldur utan um tening 5
+    private ToggleButton ten5; //dice 5 button
 
     @FXML
-    private ToggleButton asar; //heldur utan um ásar takkann
+    private ToggleButton asar; //Aces button
     @FXML
-    private ToggleButton tvistar; //heldur utan um tvistar takkann
+    private ToggleButton tvistar; //Twos button
     @FXML
-    private ToggleButton thristar; //heldur utan um þristar takkann
+    private ToggleButton thristar; //Threes button
     @FXML
-    private ToggleButton fjarkar; //heldur utan um fjarkar takkann
+    private ToggleButton fjarkar; //Fours button
     @FXML
-    private ToggleButton fimmur; //heldur utan um fimmur takkann
+    private ToggleButton fimmur; //Fives button
     @FXML
-    private ToggleButton sexur; //heldur utan um sexur takkann
+    private ToggleButton sexur; //Sixes button
     @FXML
-    private ToggleButton takaSens; //heldur utan um taka sénsinn takkann
+    private ToggleButton takaSens; //Chance button
     @FXML
-    private ToggleButton thrirEins; //heldur utan um 3 eins takkan
+    private ToggleButton thrirEins; //Three of a kind button
     @FXML
-    private ToggleButton fjorirEins; //heldur utan um 4 eins takkan
+    private ToggleButton fjorirEins; //Four of a kind button
     @FXML
-    private ToggleButton fulltHus; //heldur utan um fullt hús takkan
+    private ToggleButton fulltHus; //Full house button
     @FXML
-    private ToggleButton litilRod; //heldur utan um litla röð takkan
+    private ToggleButton litilRod; //small straight button
     @FXML
-    private ToggleButton storRod; //heldur utan um stóra röð takkan
+    private ToggleButton storRod; //large straight button
     @FXML
-    private ToggleButton yahtzee; //heldur utan um yahtzee takkan
+    private ToggleButton yahtzee; //yhatzee button
     
-    private YatzeeImp leikur; //heldur utan um YatzeeImp
+    private YatzeeImp leikur;
     
-    private final int fjoldiTeninga = 5; //fjöldi teninga í leik
+    private final int fjoldiTeninga = 5; //dice amount
     
     private final Teningar yatzeeTeningar = new Teningar(fjoldiTeninga); 
-    //tengir við Teninga klasann
 
-    private final Image [] tenMyndir = new Image[6];//fylki fyrir teninga myndir
+    private final Image [] tenMyndir = new Image[6];//dice photos
     private final String [] MYNDIR = new String []{"one","two","three","four",
-        "five","six"}; //Strengja fylki fyrir nöfn teninga
-    private int fjoldi; //fjöldi kasta eftir í umferð 
-    private Label[] ollStigBox1; //fylki sem inniheldur öll stig fyrir leikm. 1
-    private Label[] ollStigBox2; //fylki sem inniheldur öll stig fyrir leikm. 2 
-    private ToggleButton [] allirHnappar; //fylki sem inniheldur alla hnappa
-    /*private Label sensinnStig; //heldur utan um label fyrir taka sénsinn
-    private Label kost; *///heldur utan um köstin sem eru eftir
+        "five","six"}; //dice names array
+    private Label[] ollStigBox1; // contains all points for player 1
+    private Label[] ollStigBox2; // contains all points for player 2
+    private ToggleButton [] allirHnappar; // all option buttons
     
-    private ToggleButton [] allirTeningar; //fylki fyrir alla teninga
+    private ToggleButton [] allirTeningar; // all dices
     @FXML
-    private ToggleGroup hnappar; //heldur utan um hópinn af línum
+    private ToggleGroup hnappar; 
     @FXML
-    private ImageView tenMynd1; //heldur utan um myndina á teningi 1
+    private ImageView tenMynd1; 
     @FXML
-    private ImageView tenMynd2; //heldur utan um myndina á teningi 2
+    private ImageView tenMynd2; 
     @FXML
-    private ImageView tenMynd3; //heldur utan um myndina á teningi 3
+    private ImageView tenMynd3; 
     @FXML
-    private ImageView tenMynd4; //heldur utan um myndina á teningi 4
+    private ImageView tenMynd4; 
     @FXML
-    private ImageView tenMynd5; //heldur utan um myndina á teningi 5
+    private ImageView tenMynd5; 
     
-    private ImageView [] allarTenMyndir; //fylki fyrir allar myndir á teningum
     @FXML
-    private Label asarStig1; //Sýnir stigin fyrir ása fyrir leikmann 1 
+    private Label asarStig1;  
     @FXML
-    private Label tvistarStig1; //Sýnir stigin fyrir tvista fyrir leikmann 1
+    private Label tvistarStig1; 
     @FXML
-    private Label thristarStig1; //Sýnir stigin fyrir þrista fyrir leikmann 1
+    private Label thristarStig1; 
     @FXML
-    private Label fjarkarStig1; //Sýnir stigin fyrir fjarka fyrir leikmann 1
+    private Label fjarkarStig1;
     @FXML
-    private Label fimmurStig1; //Sýnir stigin fyrir fimmur fyrir leikmann 1
+    private Label fimmurStig1; 
     @FXML
-    private Label sexurStig1; //Sýnir stigin fyrir sexur fyrir leikmann 1
+    private Label sexurStig1;
     @FXML
-    private Label thrirEinsStig1; //Sýnir stigin fyrir 3 eins fyrir leikmann 1
+    private Label thrirEinsStig1; 
     @FXML
-    private Label fjorirEinsStig1; //Sýnir stigin fyrir 4 eins fyrir leikmann 1
+    private Label fjorirEinsStig1;
     @FXML
-    private Label litilRodStig1;//Sýnir stigin fyrir litla röð fyrir leikmann 1
+    private Label litilRodStig1;
     @FXML
-    private Label storRodStig1;//Sýnir stigin fyrir stóra röð fyrir leikmann 1
+    private Label storRodStig1;
     @FXML
-    private Label sensinnStig1;//Sýnir stigin fyrir taka sénsin fyrir leikmann 1
+    private Label sensinnStig1;
     @FXML
-    private Label yahtzeeStig1; //Sýnir stigin fyrir yahtzee fyrir leikmann 1
+    private Label yahtzeeStig1; 
     @FXML
-    private Label asarStig2; //Sýnir stigin fyrir ása fyrir leikmann 2
+    private Label asarStig2;
     @FXML
-    private Label tvistarStig2; //Sýnir stigin fyrir tvista fyrir leikmann 2
+    private Label tvistarStig2; 
     @FXML
-    private Label thristarStig2; //Sýnir stigin fyrir þrista fyrir leikmann 2
+    private Label thristarStig2; 
     @FXML
-    private Label fjarkarStig2;//Sýnir stigin fyrir fjarka fyrir leikmann 2
+    private Label fjarkarStig2;
     @FXML
-    private Label fimmurStig2; //Sýnir stigin fyrir fimmur fyrir leikmann 2
+    private Label fimmurStig2; 
     @FXML
-    private Label sexurStig2; //Sýnir stigin fyrir sexur fyrir leikmann 2
+    private Label sexurStig2; 
     @FXML
-    private Label thrirEinsStig2; //Sýnir stigin fyrir 3 eins fyrir leikmann 2
+    private Label thrirEinsStig2; 
     @FXML
-    private Label fjorirEinsStig2; //Sýnir stigin fyrir 4 eins fyrir leikmann 2
+    private Label fjorirEinsStig2;
     @FXML
-    private Label litilRodStig2; //Sýnir stigin fyrir  fyrir leikmann 2
+    private Label litilRodStig2; 
     @FXML
-    private Label storRodStig2; //Sýnir stigin fyrir stóra röð fyrir leikmann 2
+    private Label storRodStig2; 
     @FXML
-    private Label sensinnStig2;//Sýnir stigin fyrir taka séns fyrir leikmann 2
+    private Label sensinnStig2;
     @FXML
-    private Label yahtzeeStig2; //Sýnir stigin fyrir yahtzee fyrir leikmann 2
+    private Label yahtzeeStig2; 
     @FXML
-    private Label husStig1; //Sýnir stigin fyrir fullt hús fyrir leikmann 1
+    private Label husStig1; 
     @FXML
-    private Label husStig2; //Sýnir stigin fyrir fullt hús fyrir leikmann 2
+    private Label husStig2; 
     @FXML
-    public Label notandi1; //Sýnir nafn notanda 1
+    public Label notandi1; 
     @FXML
-    private Button kastaTening1; //kastar teningum fyrir notanda 1
+    private Button kastaTening1; // dice button for player 1
     @FXML
-    private Label kost1; //hversu mörg köst leikmaður 1 á eftir í umferðinni
+    private Label kost1; 
     @FXML
-    private Label samtals1; //Sýnir hve mörg stig leikmaður 1 er með samtals
+    private Label samtals1; 
     @FXML
-    public Label notandi2; //Sýnir nafn notanda 2
+    public Label notandi2;
     @FXML
-    private Button kastaTening2; //kastar teningum fyrir notanda 2
+    private Button kastaTening2; // dice button for player 2
     @FXML
-    private Label kost2; //hversu mörg köst leikmaður 2 á eftir í umferðinni
+    private Label kost2; 
     @FXML
-    private Label samtals2; //Sýnir hve mörg stig leikmaður 2 er með samtals
-    
-    private boolean hnappar1[];//heldur utan um hvaða raðir spilari1 er búin með
-    private boolean hnappar2[];//heldur utan um hvaða raðir spilari2 er búin með
+    private Label samtals2; 
+    private boolean hnappar1[];// contains which rows player 1 has
+    private boolean hnappar2[];// contains which rows player 2 has
     @FXML
-    private Label bonusSumma;//markar röðina þar sem summa stiga f. fyrstu 6 
-    //raðir sést
+    private Label bonusSumma;
     @FXML
-    private Label bonus; //markar röðina þar sem bónus f. fyrstu 6 raðir sést
+    private Label bonus; 
     @FXML
-    private Label bonusSummaStig1;//sýnir summu stiga fyrir fyrstu 6 raðirnar
-    //fyrir spilara 1
+    private Label bonusSummaStig1;
     @FXML
-    private Label bonusStig1;//sýnir bónus fyrir fyrstu 6 raðirnar fyrir 
-    //spilara 1
+    private Label bonusStig1;
     @FXML
-    private Label bonusSummaStig2;//sýnir summu stiga fyrir fyrstu 6 raðirnar
-    //fyrir spilara 2
+    private Label bonusSummaStig2;
     @FXML
-    private Label bonusStig2;//sýnir bónus fyrir fyrstu 6 raðirnar fyrir 
-    //spilara 2
+    private Label bonusStig2;
     @FXML
-    private Button losaTen;//takki sem losar teninga
-    public ResourceBundle tungumal;//tenging við alþjóðlegt notendaviðmót
-    private final int fjoldiTakka = 13;
-    private boolean kastad = false; //hvort búið sé að kasta teningi í umferð
-    private boolean synaUppl = true; //hvort búið sé að sýna upplýsingar
+    private Button losaTen;//frees dice
+    public ResourceBundle tungumal;
+    private final int fjoldiTakka = 13; //total numbers of option dice
+    private boolean kastad = false; // wheather dices have been thrown this turn
+    private boolean synaUppl = false;
     
     /**
      * Initializes the controller class.
@@ -240,8 +223,6 @@ public class AdalController implements Initializable {
             fjarkar, fimmur, sexur, thrirEins, fjorirEins, fulltHus, litilRod, 
             storRod, takaSens, yahtzee};
         allirTeningar = new ToggleButton [] {ten1, ten2, ten3, ten4, ten5};
-        allarTenMyndir = new ImageView [] {tenMynd1, tenMynd2, tenMynd3, 
-            tenMynd4, tenMynd5};
         
         kastaTening1.disableProperty().
                 bind(kost1.textProperty().
@@ -252,17 +233,16 @@ public class AdalController implements Initializable {
                         isEqualTo("0"));
     }
     
+    // A popup I disabled since it was annoying and wasn't adding to the user experience.
     public void upplysingar(){
         synaUppl = false;
         Alert leikreglur = new Alert (Alert.AlertType.INFORMATION);
         leikreglur.setHeaderText(tungumal.getString("Komin"));
         leikreglur.setContentText(tungumal.getString("Grunnur"));
         leikreglur.showAndWait();
-    }
+    } 
 
-    /*
-    nullstillir label fyrir stigin og samtals stig
-    */
+    // resets all point lables
     public void nullstillaStigin(){
         for(int i = 0; i < ollStigBox1.length; i++){
             ollStigBox1[i].setText("0");
@@ -279,9 +259,7 @@ public class AdalController implements Initializable {
         
     }
     
-    /*
-    gerir mögulegt að ýta aftur á hnappa
-    */
+    // initilaizes option buttons to be clickable 
     public void initHnappar(){
         for(int i = 0; i < 7; i++){
             allirHnappar[i].setDisable(false);
@@ -289,9 +267,7 @@ public class AdalController implements Initializable {
         }
     }
     
-    /*
-    reiknar samtals stig og setur þau á label
-    */
+    // calculate total points and update label
     public void samtalsStig(){
         leikur.reiknaSumma();
         if(leikur.nuverandi == 1) {
@@ -301,9 +277,7 @@ public class AdalController implements Initializable {
         }
     }
     
-    /*
-    finnur hvaða hnapp var ýtt á, setur stig og byrjar nýja umferð
-    */
+    // finds which option was chosen and starts next turn
     @FXML
     private void toggleHandler(ActionEvent event) {
         ToggleButton button = (ToggleButton)event.getSource();
@@ -322,9 +296,7 @@ public class AdalController implements Initializable {
         umferdLokid();
     }
     
-    /*
-    setur stigin á label fyrir hnapp sem var ýtt á
-    */
+    // adds points to the correct label
     private void setStig(int numer){
         int stig;
         if(numer < 6){
@@ -357,9 +329,8 @@ public class AdalController implements Initializable {
         }
         samtalsStig();
     }
-    /*
-    finnur númer hvað Togglebutton er í fylkinu allirHnappar
-    */
+    
+    // finds which option button was pressed
     private int finnaStad(ToggleButton button){
         for(int i = 0; i < allirHnappar.length; i++){
             if(button == allirHnappar[i]){
@@ -369,15 +340,9 @@ public class AdalController implements Initializable {
         return 0;
     }
     
-    /*
-    Handler sem sér um að kasta teningunum. Ef teningur hefur verið geymdur er
-    honum ekki kastað. Þegar engin köst eru eftir í umferð er takkinn gerður
-    óvirkur þar til næsta umferð hefst.
-    */
+    //throws dices and updates the UI for number of throws left
     @FXML
     private void kastaHandler(ActionEvent event) {
-        if(synaUppl)
-            upplysingar();
         if(kastad){
             nyUmferd();
             kastad = false;
@@ -393,9 +358,7 @@ public class AdalController implements Initializable {
         }
     }
     
-    /**
-     * kastar teningi og sýnir notanda möguleikana sem eru í boði
-     */
+    // throws dices, avoiding re rolling saved dice. Updates the dice UI
     private void kastaTening(){
         for(int i = 0; i < fjoldiTeninga; i++){
             int t = yatzeeTeningar.kasta(i);
@@ -407,9 +370,7 @@ public class AdalController implements Initializable {
         setjaMoguleika();
     }
 
-    /*
-    setur imageView og passar að það sé af réttri stærð
-    */
+    // updates dice UI 
      private void setImageView(int i, int t) {
          ImageView imageView = new ImageView (tenMyndir[t-1]);
          allirTeningar[i].setGraphic(imageView);
@@ -418,10 +379,7 @@ public class AdalController implements Initializable {
          imageView.setFitHeight(82); 
     }
     
-     /*
-     handler sem geymir þann tening sem var ýtt á
-     */
-
+    //handler for which dice was thrown
     @FXML
     private void tenHandler(ActionEvent event) {
         ToggleButton dice = (ToggleButton)event.getSource();
@@ -431,9 +389,7 @@ public class AdalController implements Initializable {
         }
     }
     
-    /*
-    byrjar nýja umferð fyrir
-    */
+    //starts new round
     private void nyUmferd(){
         boolean leikLokid = leikur.vinningur();
         if(leikLokid)
@@ -454,10 +410,8 @@ public class AdalController implements Initializable {
             leikur.nuverandi = 1;
         }
     }
-    /*
-    Stillir hvaða raðir spilari 1 er búinn að nota og hvaða raðir spilari 2 er 
-    búinn að nota.
-    */
+    
+    //sets which rows players have already used
     private void setjaHnappa(){
         for(int i = 0; i < allirHnappar.length; i++){
             if(leikur.nuverandi == 1){
@@ -468,9 +422,7 @@ public class AdalController implements Initializable {
         }
     }
     
-    /*
-    Byrjar nýjan leik
-    */
+    //starts a new game
     public void nyrLeikur(){
         leikur = new YatzeeImp();
         for(int i = 0; i < 5; i++){
@@ -481,6 +433,7 @@ public class AdalController implements Initializable {
         nyUmferd();
     }
     
+    //round ends
     public void umferdLokid(){
         kastad = true;
         for(int i = 0; i < allirHnappar.length;i++){
@@ -494,10 +447,7 @@ public class AdalController implements Initializable {
         }
     }
     
-    /**
-     * núll stillir umferð með því að stilla núverandi leikmann og nullstilla
-     * fylki fyrir hnappana
-     */
+    // initializes current round
     private void nullstillaUmferdir(){
         leikur.nuverandi = 1;
         kost2.setText("0");
@@ -505,34 +455,25 @@ public class AdalController implements Initializable {
         hnappar2 = new boolean[13];
     }
     
-    /*
-    Breytir nöfnum leikmanna í það sem þeir setja inn, 
-    hlekkurinn á mylli valmyndar og nafnaDialogController
-    */
+    // changes player names
     public void breytaNofnum(){
         nafnaDialogController.nofnLeikmanna();
         leikur.setNafnLeikmanns1(notandi1.getText());
         leikur.setNafnLeikmanns2(notandi2.getText());
     }
     
-    /*
-    Birtir stigatöflu.
-    */
+    //shows score board
     public void sjaToflu(){
         stigataflaController.birtaToflu();
     }
     
-    /*
-    Birtir leikLokid dialog eftir að sigurvegari er settur
-    */
+    //shows game over dialog
     public void leikurBuin(){
         setjaSigurvegaraiToflu(leikur.finnaSigurvegara());
         leikLokidController.birtaLeikLokid();
     }
     
-    /*
-    Setur sigurvegara á leikLokid dialog og setur upplýsingar í stigatöfluna
-    */
+    //adds the winner to game over dialog and adds them to the scoreboard
     private void setjaSigurvegaraiToflu(int v){
         if(v == 1){
             leikLokidController.sigur(leikur.getNafnLeikmanns1());
@@ -547,9 +488,8 @@ public class AdalController implements Initializable {
                 Integer.toString(leikur.getSumma1()));
         }
     }
-    /*
-    Losar geymda teninga
-    */
+    
+    // handler for freeing dice
     @FXML
     private void losaTenHandler(ActionEvent event) {
         for(int i = 0; i < fjoldiTeninga; i++){
@@ -559,16 +499,12 @@ public class AdalController implements Initializable {
         }
     }
     
-    /*
-    Sýnir tónlistar spilarann
-    */
+   //shows the music player
     void spilari() {
         tonlistController.synaSpilara();
     }
     
-    /**
-     * Sýnir notanda þá möguleika sem eru í boði af stigum á borðinu
-     */
+    // shows the user the possible points they would get if they chose an option
     void setjaMoguleika(){
         for(int i = 0; i < fjoldiTakka; i++){
             if(leikur.nuverandi == 1) {
@@ -589,10 +525,7 @@ public class AdalController implements Initializable {
         leikur.mogulegStig = false;
     }
     
-    /**
-     * tekur möguleikana í burtu og setur borðið eins og það á að vera 
-     * fyrir vinnsluna
-     */
+    // resets the options
     private void nullStillaMoguleika() {
         if(leikur.nuverandi == 1) {
             for(int i = 0; i < ollStigBox1.length; i++){
@@ -614,7 +547,7 @@ public class AdalController implements Initializable {
     }
     
     /**
-     * setur möguleg stig inn á borðið
+     * adds possible points to the game board
      * @param numer 
      */
     private void setMogulegStig(int numer) {

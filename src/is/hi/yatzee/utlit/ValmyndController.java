@@ -82,7 +82,7 @@ public class ValmyndController implements Initializable {
     Leyfir notanda að hætta í forritinu
     */
     @FXML
-    private void hættaHandler(ActionEvent event) {
+    private void haettaHandler(ActionEvent event) {
         System.exit(0);
     }
     /*

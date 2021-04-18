@@ -26,7 +26,7 @@
         <Menu mnemonicParsing="false" text="%Annad">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#stigaTaflaHandler" text="%Tafla" />
-            <MenuItem mnemonicParsing="false" onAction="#hættaHandler" text="%Haetta" />
+            <MenuItem mnemonicParsing="false" onAction="#haettaHandler" text="%Haetta" />
             <MenuItem mnemonicParsing="false" onAction="#opnaTonlist" text="%Tonlistar" />
          </items></Menu>
         <Menu mnemonicParsing="false" text="%Hjalp">

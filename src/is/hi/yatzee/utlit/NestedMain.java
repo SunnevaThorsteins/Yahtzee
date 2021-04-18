@@ -23,14 +23,14 @@ public class NestedMain extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        //Hleður inn íslenskri þýðingu
+        //Hleður inn íslenskri thydingu
         iskRoot = FXMLLoader.load(getClass().getResource("Adal.fxml"), 
                 ResourceBundle.getBundle("is.hi.yatzee.utlit.texti", new Locale("is")));
-        //Hleður inn enskru þýðingu
+        //Hledur inn enskru thydingu
         enskRoot = FXMLLoader.load(getClass().getResource("Adal.fxml"), 
                 ResourceBundle.getBundle("is.hi.yatzee.utlit.texti", new Locale("en","GB")));
-        //Íslanska er gefna viðótið
-        Parent root = iskRoot;
+        //isslanska er gefna 
+        Parent root = enskRoot;
         
         Scene scene = new Scene(root);
         
@@ -45,5 +45,5 @@ public class NestedMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+     
 }
