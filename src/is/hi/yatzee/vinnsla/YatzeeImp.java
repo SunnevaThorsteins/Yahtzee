@@ -55,7 +55,7 @@ public class YatzeeImp implements Yatzee {
         
     }
 
-  //calculate "simple", number of aces,twos etc.
+  //calculate "simple", how many number of aces,twos etc. do the dice show
     @Override
     public int reiknaEinfalda(int i, Teningar teningar) {
         if(nuverandi == 1){
@@ -194,7 +194,7 @@ public class YatzeeImp implements Yatzee {
         }
     }
     
-    //find row
+    //find row of dice
     private int finnaRod(int l, int f[]){
         int lengd = 1;
         for(int j = 0; j < f.length; j++){

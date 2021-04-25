@@ -29,6 +29,17 @@ public class TestTeningar {
 		allStoredDices = dice.getGeymdur();
 		assertThat(allStoredDices[lastDice], is(true));
 	}
+	
+	@Test
+	public void testSetAndGetTeningar() {
+		int[] allDice = dice.getTeningar();
+		for(int i = 0; i < allDice.length;i++) {
+			assertThat(allDice[i], is(0));
+		}
+		dice.setTeningur(0, 6);
+		allDice = dice.getTeningar();
+		assertThat(allDice[0], is(6));
+	}
 	 
 	@Test
 	public void testKastaFirstDiceNotStored() {

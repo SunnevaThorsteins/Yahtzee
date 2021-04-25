@@ -146,7 +146,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaRod(9, mockDice);
 		assertThat(30, is(points));
-		assertThat(30, is(yhatzeeGame.stigin1[9]));
+		assertThat(points, is(yhatzeeGame.stigin1[9]));
 	}
 	
 	@Test
@@ -156,7 +156,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaRod(9, mockDice);
 		assertThat(30, is(points));
-		assertThat(30, is(yhatzeeGame.stigin2[9]));
+		assertThat(points, is(yhatzeeGame.stigin2[9]));
 	}
 	
 	@Test
@@ -166,7 +166,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaRod(10, mockDice);
 		assertThat(40, is(points));
-		assertThat(40, is(yhatzeeGame.stigin2[10]));
+		assertThat(points, is(yhatzeeGame.stigin2[10]));
 	}
 	
 	@Test
@@ -176,7 +176,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaRod(10, mockDice);
 		assertThat(40, is(points));
-		assertThat(40, is(yhatzeeGame.stigin1[10]));
+		assertThat(points, is(yhatzeeGame.stigin1[10]));
 	}
 	
 	@Test
@@ -186,7 +186,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaYahtzee(13, mockDice);
 		assertThat(0, is(points));
-		assertThat(0, is(yhatzeeGame.stigin1[13]));
+		assertThat(points, is(yhatzeeGame.stigin1[13]));
 	}
 	
 	@Test
@@ -196,7 +196,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaYahtzee(13, mockDice);
 		assertThat(50, is(points));
-		assertThat(50, is(yhatzeeGame.stigin2[13]));
+		assertThat(points, is(yhatzeeGame.stigin2[13]));
 	}
 	
 	@Test
@@ -206,7 +206,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaYahtzee(13, mockDice);
 		assertThat(50, is(points));
-		assertThat(50, is(yhatzeeGame.stigin1[13]));
+		assertThat(points, is(yhatzeeGame.stigin1[13]));
 	}
 	
 	@Test
@@ -216,7 +216,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaFulltHus(8, mockDice);
 		assertThat(0, is(points));
-		assertThat(0, is(yhatzeeGame.stigin2[8]));
+		assertThat(points, is(yhatzeeGame.stigin2[8]));
 	}
 	
 	@Test
@@ -226,7 +226,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaFulltHus(8, mockDice);
 		assertThat(25, is(points));
-		assertThat(25, is(yhatzeeGame.stigin2[8]));
+		assertThat(points, is(yhatzeeGame.stigin2[8]));
 	}
 	
 	@Test
@@ -236,7 +236,7 @@ public class TestYhatzeeImpl {
 		Mockito.when(mockDice.getTeningar()).thenReturn(diceArray);
 		int points = yhatzeeGame.reiknaFulltHus(8, mockDice);
 		assertThat(25, is(points));
-		assertThat(25, is(yhatzeeGame.stigin1[8]));
+		assertThat(points, is(yhatzeeGame.stigin1[8]));
 	}
 	
 	@Test
@@ -279,6 +279,5 @@ public class TestYhatzeeImpl {
 		}
 		int bonusSum = yhatzeeGame.bonusSumma();
 		assertThat(bonusSum, is(expectedSum));
-	}
-	
+	}	
 }

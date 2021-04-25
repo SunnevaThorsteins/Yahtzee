@@ -26,7 +26,7 @@ public class Teningar {
     public boolean[] getGeymdur() {
         return geymdur;
     }
-    // getStored given a dice
+    // getStored
     private boolean getGeymdur (int i) {
         return geymdur[i];
     }
@@ -43,7 +43,7 @@ public class Teningar {
         int randomNum = rand.nextInt((MAX - MIN) + 1) + MIN;
         return randomNum;
     }
-    // not stored
+    // not stored, retrives all dice not stored
     public void ekkiGeymdir() {
        for (int i=0; i<teningar.length; i++) {
             geymdur[i] = false;

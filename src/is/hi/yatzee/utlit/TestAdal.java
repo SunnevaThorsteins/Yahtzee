@@ -66,22 +66,6 @@ public class TestAdal extends ApplicationTest{
     }
     
     @Test
-    public void testCheckInitCorrectP1Points() {
-    	for(int i = 0; i < P1UIPOINTIDS.length; i++) {
-    		Label pointLabel = find(P1UIPOINTIDS[i]);
-    		assertThat(pointLabel.getText(), is("0"));
-    	}
-    }
-    
-    @Test
-    public void testCheckInitCorrectP2Points() {
-    	for(int i = 0; i < P2UIPOINTIDS.length; i++) {
-    		Label pointLabel = find(P2UIPOINTIDS[i]);
-    		assertThat(pointLabel.getText(), is("0"));
-    	}
-    }
-    
-    @Test
     public void testInitTotal1Correct() {
     	Label total = find("#samtals1");
     	assertThat(total.getText(), is("0"));
@@ -116,6 +100,30 @@ public class TestAdal extends ApplicationTest{
     	assertThat(find(ALLDICEIDS[0]).isDisabled(), is(true));
     	clickOn("#losaTen");
     	assertThat(find(ALLDICEIDS[0]).isDisabled(), is(false));
+    }
+    
+    @Test
+    public void testPointsAddedCorrectlyToTotalP1() {
+    	clickOn("#kastaTening1");
+    	clickOn("#takaSens");
+    	Label chance = find("#sensinnStig1");
+    	String chosenPoints = chance.getText();
+    	clickOn("#takaSens");
+    	Label total = find("#samtals1");
+    	assertThat(chosenPoints, is(total.getText()));
+    }
+    
+    @Test
+    public void testPointsAddedCorrectlyToTotalP2() {
+    	clickOn("#kastaTening1");
+    	clickOn("#yahtzee");
+    	// Now it's player 2's turn
+    	clickOn("#kastaTening2");
+    	Label chance = find("#sensinnStig2");
+    	String chosenPoints = chance.getText();
+    	clickOn("#takaSens");
+    	Label total = find("#samtals2");
+    	assertThat(chosenPoints, is(total.getText()));
     }
     
     @After
